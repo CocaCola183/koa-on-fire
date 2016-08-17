@@ -49,8 +49,9 @@ app.use(async function (ctx, next) {
 
 /* 路由 */
 router.get('/', async (ctx, next) => {
-	ctx.body = await pm25.info('hello world');
+	ctx.body = 'hello world';
 });
+
 app
   .use(router.routes())
   .use(router.allowedMethods());

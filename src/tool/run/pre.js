@@ -1,9 +1,9 @@
 import fs from 'fs';
 import config from '../../../config.json';
-import Log from '../../../log.js';
+import Logger from '../logger/index.js';
 
 const configGlobal = () => {
-	global.log = Log(config.log);
+	global.log = Logger(config.log);
 }
 
 const pre = () => {
