@@ -69,10 +69,5 @@ app.use(async (ctx, next) => {
 
 /*start server*/
 app.listen(port, () => {
-	log.log(`Server is listening on port:${port}`);
+	log.info(`Server is listening on port:${port}`);
 });
-
-/*开启定时服务*/
-(function () {
-
-})();

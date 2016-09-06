@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const config = require('../config.json');
+const config = require('./config.json');
 const nodemon = require('gulp-nodemon');
 
 // run in prod

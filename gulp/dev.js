@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-const config = require('../config.json');
+const config = require('./config.json');
 require('./compile.js');
 
 // run dev

@@ -1,38 +1,7 @@
 import fs from 'fs';
 import tracer from 'tracer';
 import colors from 'colors';
-import config from '../../../config.json';
-
-let conf = {
-  dir: './log',
-  level: 0, // write into files when method rank greater than record_level
-  methods: {
-    log: {
-      color: 'white', 
-      rank: '0'
-    },
-    info: { 
-      color: 'green', 
-      rank: '1'
-    },
-    trace: { 
-      color: 'cyan', 
-      rank: '2'
-    },
-    debug: { 
-      color: 'blue', 
-      rank: '3'
-    },
-    warn: { 
-      color: 'yellow', 
-      rank: '4'
-    },
-    error: { 
-      color: 'red', 
-      rank: '5'
-    }
-  }
-}
+import conf from './config.json';
 
 /**
  * logger
@@ -42,6 +11,8 @@ let conf = {
 function logger(opt) {
   opt = opt || {};
 
+  let env = opt.env || 'dev';
+
   /*log dir*/
   let dir = opt.dir || conf.dir;
 
@@ -49,11 +20,11 @@ function logger(opt) {
   let methods = opt.methods || conf.methods;
 
   /*record_level*/
-  let level = opt.level || conf.level;
+  // let level = opt.level || conf.level;
 
   let formats = {}
-  Object.keys(opt.methods).map(function (method) {
-    formats[method] = opt.methods[method]["format"];
+  Object.keys(methods).map(function (method) {
+    formats[method] = methods[method]["format"];
   });
 
 
@@ -84,21 +55,24 @@ function logger(opt) {
 
   /*logger*/
   return tracer.console({
-    level: 0,
     format: [
-              "{{timestamp}} {{file}}:{{line}} {{message}}",
+              "[{{timestamp}}] <{{file}}:{{line}}> {{message}}",
               formats
             ],
     dateformat: "yyyy-mm-dd HH:MM:ss",
     methods: Object.keys(methods),
     transport: function (data) {
       try {
-        if (data.output[methods[data.title].color]) {
-          console.log(data.output[methods[data.title].color]);
-        } else {
-          console.log(data.output)
+        // log in console
+        if (process.env.env === 'dev' || (methods[data.title] && methods[data.title].print)) {
+          if (data.output[methods[data.title].color]) {
+            console.log(data.output[methods[data.title].color]);
+          } else {
+            console.log(data.output)
+          }
         }
-        if (data.level >= level) {
+        // backup to files
+        if (process.env.env != 'dev' && methods[data.title] && methods[data.title].backup) {
           const logPath = `${dir}/${data.title}/${data.timestamp.substring(0, 10)}.log`;
           const writeStream = fs.createWriteStream(logPath, {
               flags: "a",

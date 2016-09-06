@@ -1,0 +1,21 @@
+{
+  "dir": "./log",
+  "env": "dev",
+  "methods": {
+    "info": { 
+      "color": "green",
+      "print": false, 
+      "backup": true
+    },
+    "trace": { 
+      "color": "cyan",
+      "print": true, 
+      "backup": false
+    },
+    "error": { 
+      "color": "red",
+      "print": true, 
+      "backup": true
+    }
+  }
+}

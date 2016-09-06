@@ -1,0 +1,9 @@
+{
+	"gulp": {
+		"es6": {
+			"src": ["./src/**/*.js", "./src/**/*.json"],
+			"dist":"./dist"
+		},
+		"main": "./dist/index.js"
+	}
+}

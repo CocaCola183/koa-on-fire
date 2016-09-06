@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
-var config = require('../config.json');
+var config = require('./config.json');
 const changed = require('gulp-changed');
 
 gulp.task('watch', function(callback) {

@@ -1,27 +1,3 @@
 {
-	"env": "development",
-	"gulp": {
-		"es6": {
-			"src": "./src/**/*.js",
-			"dist":"./dist"
-		},
-		"main": "./dist/index.js"
-	},
-	"log": {
-		"dir": "./log",
-		"level": 4,
-		"methods": {
-			"log": { "color": "white", "rank": 0, "format": "{{message}}"},
-    	"info": { "color": "green", "rank": 1, "format": "{{timestamp}} {{file}}:{{line}} {{message}}"},
-    	"http": { "color": "white", "rank": 2, "format": "{{timestamp}} {{message}}"},
-    	"trace": { "color": "cyan", "rank": 3, "format": "{{timestamp}} {{file}}:{{line}} {{message}}"},
-    	"debug": { "color": "blue", "rank": 4, "format": "{{timestamp}} {{file}}:{{line}} {{message}}"},
-    	"warn": { "color": "yellow", "rank": 5, "format": "{{timestamp}} {{file}}:{{line}} {{message}}"},
-    	"error": { "color": "red", "rank": 6, "format": "{{timestamp}} {{file}}:{{line}}:{{method}} {{message}}"}
-		}
-	},
-	"mongo": {
-		"addr": "mongodb://localhost/test",
-		"name": "test"
-	}
+	"env": "dev"
 }
