@@ -1,6 +1,5 @@
 {
   "dir": "./log",
-  "env": "dev",
   "methods": {
     "info": { 
       "color": "green",

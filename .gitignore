@@ -33,4 +33,6 @@ tmp
 
 dist
 
+src/tool/mail/config.json
+
 

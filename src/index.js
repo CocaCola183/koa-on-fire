@@ -42,13 +42,14 @@ app.use(morgan('combined', {
 }));
  
 /* http日志 */
-app.use(async function (ctx, next) {
-	log.http(`${ctx.request.method} ${ctx.request.url}`);
-	await next();
-});
+// app.use(async function (ctx, next) {
+// 	log.http(`${ctx.request.method} ${ctx.request.url}`);
+// 	await next();
+// });
 
 /* 路由 */
 router.get('/', async (ctx, next) => {
+	throw(new Error('hello world'));
 	ctx.body = 'hello world';
 });
 
